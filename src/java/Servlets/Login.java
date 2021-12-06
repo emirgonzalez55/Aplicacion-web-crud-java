@@ -51,7 +51,6 @@ public class Login extends HttpServlet {
             String usuario = metodos.buscarNombre(nombre);
             
             sesion.setAttribute("nombre", usuario);
-            sesion.setAttribute("nombre", nombre);
         } else {
             request.setAttribute("mensaje", "El usuario no existe");
             request.getRequestDispatcher("index.jsp").forward(request, response);
