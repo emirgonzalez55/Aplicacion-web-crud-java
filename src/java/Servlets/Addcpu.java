@@ -46,9 +46,8 @@ public class Addcpu extends HttpServlet {
         if (registro == true) {
             request.setAttribute("mensaje", "Procesador añadido correctamente");
             request.getRequestDispatcher("addcpu.jsp").forward(request, response);
-        } else {
-            out.println("alert('Errir al regustrar')");
-            out.println("location='index.jsp'");
+        } else {   
+            out.println("location='addcpu.jsp'");
         }
         System.out.println("El valor agregado es" + registro);
         out.println("</script>");
