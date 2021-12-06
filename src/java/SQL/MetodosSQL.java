@@ -24,6 +24,7 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
+            if(nombre != null && password != null ){
             String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
             sentenciaPreparada = conexion.prepareStatement(consulta);
             sentenciaPreparada.setString(1, nombre);
@@ -38,6 +39,10 @@ public class MetodosSQL {
                 registro = false;
                 System.out.println("Error al registrar");
 
+            }
+            
+            }else {
+                System.out.println("No registrado");
             }
             conexion.close();
         } catch (SQLException e) {
@@ -122,6 +127,7 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
+            if(marca != null && modelo != null && rendimiento != null){
             String consulta = "INSERT INTO procesadores(marca,modelo,rendimiento) VALUES(?,?,?)";
             sentenciaPreparada = conexion.prepareStatement(consulta);
             sentenciaPreparada.setString(1, marca);
@@ -132,11 +138,15 @@ public class MetodosSQL {
 
             if (resultadoInsercion > 0) {
                 registro = true;
-                System.out.println("Usuario añadido corretamente");
+                System.out.println("Procesador añadido corretamente");
             } else {
                 registro = false;
-                System.out.println("Error al registrar");
+                System.out.println("Error al guardar");
 
+            }
+            
+            }else {
+                System.out.println("No guardado");
             }
             conexion.close();
         } catch (SQLException e) {
@@ -158,6 +168,7 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
+            if(marca != null && modelo != null && rendimiento != null){
             String consulta = "INSERT INTO graficas (marca,modelo,rendimiento) VALUES(?,?,?)";
             sentenciaPreparada = conexion.prepareStatement(consulta);
             sentenciaPreparada.setString(1, marca);
@@ -168,11 +179,15 @@ public class MetodosSQL {
 
             if (resultadoInsercion > 0) {
                 registro = true;
-                System.out.println("Usuario añadido corretamente");
+                System.out.println("Grafica añadida corretamente");
             } else {
                 registro = false;
-                System.out.println("Error al registrar");
+                System.out.println("Error al guardar");
 
+            }
+            
+            }else {
+                System.out.println("No guardado");
             }
             conexion.close();
         } catch (SQLException e) {
@@ -194,6 +209,7 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
+            if(marca != null && modelo != null && rendimiento != null){
             String consulta = "INSERT INTO chipsets (marca,modelo,rendimiento) VALUES(?,?,?)";
             sentenciaPreparada = conexion.prepareStatement(consulta);
             sentenciaPreparada.setString(1, marca);
@@ -204,11 +220,15 @@ public class MetodosSQL {
 
             if (resultadoInsercion > 0) {
                 registro = true;
-                System.out.println("Usuario añadido corretamente");
+                System.out.println("Chipset añadido corretamente");
             } else {
                 registro = false;
                 System.out.println("Error al registrar");
 
+            }
+            
+            }else {
+                System.out.println("No guardado");
             }
             conexion.close();
         } catch (SQLException e) {
