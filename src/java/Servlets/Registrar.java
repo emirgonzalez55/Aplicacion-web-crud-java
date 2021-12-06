@@ -48,8 +48,7 @@ public class Registrar extends HttpServlet {
 "          <a href=\"index.jsp\">Inciar sesion </a></p>");
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
             }else{
-                out.println("alert('Errir al regustrar')");
-                out.println("location='index.jsp'");
+                out.println("location='registrar.jsp'");
             }
             System.out.println("El valor agregado es" + registro);
             out.println("</script>");
