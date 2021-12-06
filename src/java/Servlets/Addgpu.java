@@ -45,10 +45,9 @@ public class Addgpu extends HttpServlet {
 
         if (registro == true) {
             request.setAttribute("mensaje", "Grafica añadida correctamente");
-            request.getRequestDispatcher("addcpu.jsp").forward(request, response);
+            request.getRequestDispatcher("addgpu.jsp").forward(request, response);
         } else {
-            out.println("alert('Errir al regustrar')");
-            out.println("location='index.jsp'");
+            out.println("location='addgpu.jsp'");
         }
         System.out.println("El valor agregado es" + registro);
         out.println("</script>");
