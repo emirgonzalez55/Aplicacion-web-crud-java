@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
             
             sesion.setAttribute("nombre", usuario);
         } else {
-            request.setAttribute("mensaje", "El usuario no existe");
+            request.setAttribute("mensaje", "¡El usuario y/o contraseña son incorrectos!");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }

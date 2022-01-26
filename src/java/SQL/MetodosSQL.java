@@ -4,6 +4,8 @@
  */
 package SQL;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,30 +21,40 @@ public class MetodosSQL {
     private PreparedStatement sentenciaPreparada;
     private ResultSet resultado;
 
-    public boolean registrarUsuario(String nombre, String password) {
+    public boolean registrarUsuario(String nombre, String password, String password1) {
         boolean registro = false;
 
         try {
             conexion = ConexionBD.conectar();
-            if(nombre != null && password != null ){
-            String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
-            sentenciaPreparada = conexion.prepareStatement(consulta);
+            String consultauser = "SELECT nombre FROM usuarios WHERE nombre = ? ";
+            sentenciaPreparada = conexion.prepareStatement(consultauser);
             sentenciaPreparada.setString(1, nombre);
-            sentenciaPreparada.setString(2, password);
+            resultado = sentenciaPreparada.executeQuery();
+            if (!resultado.next()) {
+                    
+                if (nombre != null && password != null && password.equals(password1)) {
+                    String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
+                    sentenciaPreparada = conexion.prepareStatement(consulta);
+                    sentenciaPreparada.setString(1, nombre);
+                    sentenciaPreparada.setString(2, getmd5(password));
 
-            int resultadoInsercion = sentenciaPreparada.executeUpdate();
+                    int resultadoInsercion = sentenciaPreparada.executeUpdate();
 
-            if (resultadoInsercion > 0) {
-                registro = true;
-                System.out.println("Usuario añadido corretamente");
+                    if (resultadoInsercion > 0) {
+                        registro = true;
+                        System.out.println("Usuario añadido corretamente");
+                    } else {
+                        registro = false;
+                        System.out.println("Error al registrar");
+
+                    }
+
+                } else {
+                    System.out.println("No registrado");
+                }
             } else {
-                registro = false;
-                System.out.println("Error al registrar");
+                System.out.println("El usuario ya existe");
 
-            }
-            
-            }else {
-                System.out.println("No registrado");
             }
             conexion.close();
         } catch (SQLException e) {
@@ -67,7 +79,7 @@ public class MetodosSQL {
             String consulta = "SELECT nombre, password FROM usuarios WHERE nombre = ? AND password = ?";
             sentenciaPreparada = conexion.prepareStatement(consulta);
             sentenciaPreparada.setString(1, nombre);
-            sentenciaPreparada.setString(2, password);
+            sentenciaPreparada.setString(2, getmd5(password));
             resultado = sentenciaPreparada.executeQuery();
             if (resultado.next()) {
                 iniciarSesion = true;
@@ -127,25 +139,25 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
-            if(marca != null && modelo != null && rendimiento != null){
-            String consulta = "INSERT INTO procesadores(marca,modelo,rendimiento) VALUES(?,?,?)";
-            sentenciaPreparada = conexion.prepareStatement(consulta);
-            sentenciaPreparada.setString(1, marca);
-            sentenciaPreparada.setString(2, modelo);
-            sentenciaPreparada.setString(3, rendimiento);
+            if (marca != null && modelo != null && rendimiento != null) {
+                String consulta = "INSERT INTO procesadores(marca,modelo,rendimiento) VALUES(?,?,?)";
+                sentenciaPreparada = conexion.prepareStatement(consulta);
+                sentenciaPreparada.setString(1, marca);
+                sentenciaPreparada.setString(2, modelo);
+                sentenciaPreparada.setString(3, rendimiento);
 
-            int resultadoInsercion = sentenciaPreparada.executeUpdate();
+                int resultadoInsercion = sentenciaPreparada.executeUpdate();
 
-            if (resultadoInsercion > 0) {
-                registro = true;
-                System.out.println("Procesador añadido corretamente");
+                if (resultadoInsercion > 0) {
+                    registro = true;
+                    System.out.println("Procesador añadido corretamente");
+                } else {
+                    registro = false;
+                    System.out.println("Error al guardar");
+
+                }
+
             } else {
-                registro = false;
-                System.out.println("Error al guardar");
-
-            }
-            
-            }else {
                 System.out.println("No guardado");
             }
             conexion.close();
@@ -168,25 +180,25 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
-            if(marca != null && modelo != null && rendimiento != null){
-            String consulta = "INSERT INTO graficas (marca,modelo,rendimiento) VALUES(?,?,?)";
-            sentenciaPreparada = conexion.prepareStatement(consulta);
-            sentenciaPreparada.setString(1, marca);
-            sentenciaPreparada.setString(2, modelo);
-            sentenciaPreparada.setString(3, rendimiento);
+            if (marca != null && modelo != null && rendimiento != null) {
+                String consulta = "INSERT INTO graficas (marca,modelo,rendimiento) VALUES(?,?,?)";
+                sentenciaPreparada = conexion.prepareStatement(consulta);
+                sentenciaPreparada.setString(1, marca);
+                sentenciaPreparada.setString(2, modelo);
+                sentenciaPreparada.setString(3, rendimiento);
 
-            int resultadoInsercion = sentenciaPreparada.executeUpdate();
+                int resultadoInsercion = sentenciaPreparada.executeUpdate();
 
-            if (resultadoInsercion > 0) {
-                registro = true;
-                System.out.println("Grafica añadida corretamente");
+                if (resultadoInsercion > 0) {
+                    registro = true;
+                    System.out.println("Grafica añadida corretamente");
+                } else {
+                    registro = false;
+                    System.out.println("Error al guardar");
+
+                }
+
             } else {
-                registro = false;
-                System.out.println("Error al guardar");
-
-            }
-            
-            }else {
                 System.out.println("No guardado");
             }
             conexion.close();
@@ -209,25 +221,25 @@ public class MetodosSQL {
 
         try {
             conexion = ConexionBD.conectar();
-            if(marca != null && modelo != null && rendimiento != null){
-            String consulta = "INSERT INTO chipsets (marca,modelo,rendimiento) VALUES(?,?,?)";
-            sentenciaPreparada = conexion.prepareStatement(consulta);
-            sentenciaPreparada.setString(1, marca);
-            sentenciaPreparada.setString(2, modelo);
-            sentenciaPreparada.setString(3, rendimiento);
+            if (marca != null && modelo != null && rendimiento != null) {
+                String consulta = "INSERT INTO chipsets (marca,modelo,rendimiento) VALUES(?,?,?)";
+                sentenciaPreparada = conexion.prepareStatement(consulta);
+                sentenciaPreparada.setString(1, marca);
+                sentenciaPreparada.setString(2, modelo);
+                sentenciaPreparada.setString(3, rendimiento);
 
-            int resultadoInsercion = sentenciaPreparada.executeUpdate();
+                int resultadoInsercion = sentenciaPreparada.executeUpdate();
 
-            if (resultadoInsercion > 0) {
-                registro = true;
-                System.out.println("Chipset añadido corretamente");
+                if (resultadoInsercion > 0) {
+                    registro = true;
+                    System.out.println("Chipset añadido corretamente");
+                } else {
+                    registro = false;
+                    System.out.println("Error al registrar");
+
+                }
+
             } else {
-                registro = false;
-                System.out.println("Error al registrar");
-
-            }
-            
-            }else {
                 System.out.println("No guardado");
             }
             conexion.close();
@@ -242,7 +254,22 @@ public class MetodosSQL {
         }
 
         System.out.println("Valor registro;" + registro);
-        return registro;   
+        return registro;
     }
-    
+
+    public String getmd5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] encBytes = md.digest(input.getBytes());
+            BigInteger numero = new BigInteger(1, encBytes);
+            String encString = numero.toString(16);
+            while (encString.length() < 32) {
+                encString = "0" + encString;
+            }
+            return encString;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

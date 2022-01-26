@@ -35,12 +35,14 @@ public class Registrar extends HttpServlet {
             MetodosSQL metodos = new MetodosSQL();
             String nombre = request.getParameter("nombre");
             String password = request.getParameter("password");
+            String password1 = request.getParameter("password1");
+
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");           
             out.println("<body>");
             out.println("<script type=\"text/javascript\">");
-            boolean registro = metodos.registrarUsuario(nombre, password);
+            boolean registro = metodos.registrarUsuario(nombre, password, password1 );
             
             if(registro == true){
             request.setAttribute("mensaje", "Usuario creado con exito"
@@ -48,7 +50,8 @@ public class Registrar extends HttpServlet {
 "          <a href=\"index.jsp\">Inciar sesion </a></p>");
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
             }else{
-                out.println("location='registrar.jsp'");
+            request.setAttribute("mensaje", "¡Las contraseñas no coinciden y/o el usuario ya existe!");
+            request.getRequestDispatcher("registrar.jsp").forward(request, response);
             }
             System.out.println("El valor agregado es" + registro);
             out.println("</script>");
