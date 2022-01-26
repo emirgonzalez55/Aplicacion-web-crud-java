@@ -4,13 +4,12 @@ Esta aplicacion web permite el acceso a una base de datos de hardware.<br>
 
 Versión actual V1.2201260222BETA
 
-Actualización V1.2201260222<br>
+Actualización V1.2201260222BETA<br>
 -Corrección de errores.<br>
 -Mejoras visuales.<br>
 -Nuevas funciones.<br>
 
 Versiones anteriores.<br>
-
 Versión V1.211207950BETA<br>
 -Corrección de errores.<br>
 Versión inicial V1.211016953BETA
