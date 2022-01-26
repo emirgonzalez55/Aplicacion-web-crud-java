@@ -13,7 +13,7 @@
     
 <main class="form-signin">
   <form action="InciarSesion" method="POST" >
-    <img class="mb-4" src="img/login.png" alt="" width="72" height="57">
+    <img class="mb-4" src="img/login.png" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Inciar sesion</h1>
     <a href="registrar.jsp">Registrarse
       <br>
@@ -21,11 +21,11 @@
     </a>
 
     <div class="form-floating">
-      <input type="text" name ="nombre" required class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" name ="nombre" pattern="[A-Za-z0-9_-]{4,8}" required class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Nombre de usuario</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" required class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name="password" pattern="[A-Za-z0-9_-]{4,8}" required class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Contraseña</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" name="accion" value="Inciar" type="submit">Inciar sesion</button>
