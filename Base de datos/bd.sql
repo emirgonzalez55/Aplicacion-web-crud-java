@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.27, for Linux (x86_64)
 --
 -- Host: localhost    Database: bd
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -28,7 +28,7 @@ CREATE TABLE `chipsets` (
   `modelo` varchar(45) DEFAULT NULL,
   `rendimiento` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `chipsets` (
 
 LOCK TABLES `chipsets` WRITE;
 /*!40000 ALTER TABLE `chipsets` DISABLE KEYS */;
-INSERT INTO `chipsets` VALUES (1,'Qualcomm','snapdragon 450','90'),(2,'Qualcomm','snapdragon 650','90'),(3,'Qualcomm','snapdragon 636','90'),(4,'Qualcomm','snapdragon 888','90'),(5,'Qualcomm','snapdragon 650','90'),(6,'Qualcomm','snapdragon 425','90'),(8,'MediaTek','MediaTek','90'),(9,'MediaTek','MediaTek','90'),(10,'MediaTek','MediaTek','90'),(11,'MediaTek','MediaTek','90'),(12,'Exynos','Exynos','90'),(13,'Exynos','Exynos','90'),(14,'Exynos','Exynos','90'),(15,'Exynos','Exynos','90'),(16,'Exynos','Exynos','90'),(119,'aaaaaaaaaaaaaa','aaaaaaaaaaaaaa','99');
+INSERT INTO `chipsets` VALUES (1,'Qualcomm','snapdragon 450','90'),(2,'Qualcomm','snapdragon 650','90'),(3,'Qualcomm','snapdragon 636','90'),(4,'Qualcomm','snapdragon 888','90'),(5,'Qualcomm','snapdragon 650','90'),(6,'Qualcomm','snapdragon 425','90'),(8,'MediaTek','MediaTek','90'),(9,'MediaTek','MediaTek','90'),(10,'MediaTek','MediaTek','90'),(11,'MediaTek','MediaTek','90'),(12,'Exynos','Exynos','90'),(13,'Exynos','Exynos','90'),(14,'Exynos','Exynos','90'),(15,'Exynos','Exynos','90'),(16,'Exynos','Exynos','90');
 /*!40000 ALTER TABLE `chipsets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `graficas` (
   `modelo` varchar(45) DEFAULT NULL,
   `rendimiento` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `procesadores` (
   `modelo` varchar(45) DEFAULT NULL,
   `rendimiento` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=623 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=786 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'emir','1234'),(2,'admin','1234');
+INSERT INTO `usuarios` VALUES (1,'emir','81dc9bdb52d04dc20036dbd8313ed055'),(2,'admin','81dc9bdb52d04dc20036dbd8313ed055');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -127,4 +127,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-16 22:00:05
+-- Dump completed on 2022-01-27 16:41:31
