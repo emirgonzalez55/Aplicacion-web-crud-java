@@ -46,11 +46,12 @@ public class Login extends HttpServlet {
         boolean iniciarSesion = metodos.buscarUsuarioInicioSesion(nombre, password);
         if (iniciarSesion == true) {
             out.println("location ='inicio.jsp'");
-            
-            
+
             String usuario = metodos.buscarNombre(nombre);
-            
+
             sesion.setAttribute("nombre", usuario);
+        } else if (nombre == null && password == null) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             request.setAttribute("mensaje", "¡El usuario y/o contraseña son incorrectos!");
             request.getRequestDispatcher("index.jsp").forward(request, response);

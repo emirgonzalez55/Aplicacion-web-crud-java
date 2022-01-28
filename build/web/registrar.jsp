@@ -22,15 +22,15 @@
     <h1 class="h3 mb-3 fw-normal">Complete el formulario para registrarse</h1>
 
     <div class="form-floating">
-      <input type="text" name ="nombre" pattern="[A-Za-z0-9_-]{4,8}" required class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" name ="nombre" pattern="[A-Za-z0-9_-]{4,8}" title="Minimo 4 caracteres máximo 8, No se permiten caracteres especiales" required class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Nombre de usuario</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" pattern="[A-Za-z0-9_-]{4,8}" required class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name="password" pattern="[A-Za-z0-9_-]{4,8}" title="Minimo 4 caracteres máximo 8, No se permiten caracteres especiales" required class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Contraseña</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password1" pattern="[A-Za-z0-9_-]{4,8}" required class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name="password1" pattern="[A-Za-z0-9_-]{4,8}" title="Minimo 4 caracteres máximo 8, No se permiten caracteres especiales" required class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Repita la contraseña</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary"  type="submit">Registrarse</button>

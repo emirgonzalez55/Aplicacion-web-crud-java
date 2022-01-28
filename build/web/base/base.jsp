@@ -41,7 +41,7 @@
       <form class="d-flex" action="consultasmutiples.jsp" method="POST" >
 
         <input type="search" required name ="consulta" pattern="[A-Za-z0-9\s_-]{1,100}" class="form-control me-2 Search " id="floatingInput" placeholder="Buscar">
-        <button class="btn btn-outline-success buscar" type="submit">Buscar</button>>
+        <button class="btn btn-outline-success buscar" type="submit">Buscar</button>
       </form>
       <div class="dropdown text-end">
           <a href="" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

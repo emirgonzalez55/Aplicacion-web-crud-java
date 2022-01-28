@@ -11,17 +11,17 @@
     <h1 class="h3 mb-3 fw-normal " >Complete el formulario para añadir un procesador</h1>
     <br>
     <div class="form-floating">
-      <input type="text" required name ="marca" class="form-control" id="floatingInput" placeholder="">
+      <input type="text" pattern=".{1,45}" title="Maximo 45 caracteres" required name ="marca" class="form-control" id="floatingInput" placeholder="">
       <label for="floatingInput">Marca</label>
     </div>
     <br>
     <div class="form-floating">
-      <input type="text" required name="modelo"class="form-control" id="floatingPassword" placeholder="">
+      <input type="text" pattern=".{1,45}" title="Maximo 45 caracteres" required name="modelo"class="form-control" id="floatingPassword" placeholder="">
       <label for="floatingPassword">Modelo</label>
     </div>
     <br>
     <div class="form-floating">
-      <input type="number" required name="rendimiento"class="form-control" id="floatingPassword" placeholder="">
+      <input type="number" min="1" max="100" required name="rendimiento"class="form-control" id="floatingPassword" placeholder="">
       <label for="floatingPassword">Rendimiento</label>
     </div>
     <br>

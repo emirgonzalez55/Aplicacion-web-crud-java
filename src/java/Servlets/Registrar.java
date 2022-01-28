@@ -31,33 +31,35 @@ public class Registrar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-            
-            MetodosSQL metodos = new MetodosSQL();
-            String nombre = request.getParameter("nombre");
-            String password = request.getParameter("password");
-            String password1 = request.getParameter("password1");
 
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");           
-            out.println("<body>");
-            out.println("<script type=\"text/javascript\">");
-            boolean registro = metodos.registrarUsuario(nombre, password, password1 );
-            
-            if(registro == true){
+        MetodosSQL metodos = new MetodosSQL();
+        String nombre = request.getParameter("nombre");
+        String password = request.getParameter("password");
+        String password1 = request.getParameter("password1");
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<body>");
+        out.println("<script type=\"text/javascript\">");
+        boolean registro = metodos.registrarUsuario(nombre, password, password1);
+
+        if (registro == true) {
             request.setAttribute("mensaje", "Usuario creado con exito"
-                    + "          <br>\n" +
-"          <a href=\"index.jsp\">Inciar sesion </a></p>");
+                    + "          <br>\n"
+                    + "          <a href=\"index.jsp\">Inciar sesion </a></p>");
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
-            }else{
+        } else if (nombre == null && password == null) {
+            request.getRequestDispatcher("registrar.jsp").forward(request, response);
+
+        } else {
             request.setAttribute("mensaje", "¡Las contraseñas no coinciden y/o el usuario ya existe!");
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
-            }
-            System.out.println("El valor agregado es" + registro);
-            out.println("</script>");
-            out.println("</body>");
-            out.println("</html>");
-        
+        }
+        System.out.println("El valor agregado es" + registro);
+        out.println("</script>");
+        out.println("</body>");
+        out.println("</html>");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

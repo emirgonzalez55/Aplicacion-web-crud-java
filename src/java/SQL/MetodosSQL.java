@@ -31,7 +31,7 @@ public class MetodosSQL {
             sentenciaPreparada.setString(1, nombre);
             resultado = sentenciaPreparada.executeQuery();
             if (!resultado.next()) {
-                    
+
                 if (nombre != null && password != null && password.equals(password1)) {
                     String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
                     sentenciaPreparada = conexion.prepareStatement(consulta);
@@ -73,17 +73,23 @@ public class MetodosSQL {
 
     public boolean buscarUsuarioInicioSesion(String nombre, String password) {
         boolean iniciarSesion = false;
+        boolean carga = false;
 
         try {
             conexion = ConexionBD.conectar();
-            String consulta = "SELECT nombre, password FROM usuarios WHERE nombre = ? AND password = ?";
-            sentenciaPreparada = conexion.prepareStatement(consulta);
-            sentenciaPreparada.setString(1, nombre);
-            sentenciaPreparada.setString(2, getmd5(password));
-            resultado = sentenciaPreparada.executeQuery();
-            if (resultado.next()) {
-                iniciarSesion = true;
+            if (nombre != null && password != null) {
+                String consulta = "SELECT nombre, password FROM usuarios WHERE nombre = ? AND password = ?";
+                sentenciaPreparada = conexion.prepareStatement(consulta);
+                sentenciaPreparada.setString(1, nombre);
+                sentenciaPreparada.setString(2, getmd5(password));
+                resultado = sentenciaPreparada.executeQuery();
+                if (resultado.next()) {
+                    iniciarSesion = true;
 
+                } else {
+                    iniciarSesion = false;
+
+                }
             } else {
                 iniciarSesion = false;
 
