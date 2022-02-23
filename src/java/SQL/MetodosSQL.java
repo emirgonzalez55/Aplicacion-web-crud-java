@@ -23,6 +23,9 @@ public class MetodosSQL {
 
     public boolean registrarUsuario(String nombre, String password, String password1) {
         boolean registro = false;
+        boolean usercheck = false;
+
+
 
         try {
             conexion = ConexionBD.conectar();
@@ -32,27 +35,32 @@ public class MetodosSQL {
             resultado = sentenciaPreparada.executeQuery();
             if (!resultado.next()) {
 
-                if (nombre != null && password != null && password.equals(password1)) {
-                    String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
-                    sentenciaPreparada = conexion.prepareStatement(consulta);
-                    sentenciaPreparada.setString(1, nombre);
-                    sentenciaPreparada.setString(2, getmd5(password));
+                if (nombre != null && password != null ) {
+                    if(password.equals(password1)){
+                        String consulta = "INSERT INTO usuarios(nombre,password) VALUES(?,?)";
+                        sentenciaPreparada = conexion.prepareStatement(consulta);
+                        sentenciaPreparada.setString(1, nombre);
+                        sentenciaPreparada.setString(2, getmd5(password));
+                            
+                        int resultadoInsercion = sentenciaPreparada.executeUpdate();
+                    
+                        if (resultadoInsercion > 0) {
+                            registro = true;
+                            System.out.println("Usuario añadido corretamente");
+                        } else {
+                            registro = false;
+                            System.out.println("Error al registrar");
 
-                    int resultadoInsercion = sentenciaPreparada.executeUpdate();
-
-                    if (resultadoInsercion > 0) {
-                        registro = true;
-                        System.out.println("Usuario añadido corretamente");
-                    } else {
-                        registro = false;
-                        System.out.println("Error al registrar");
-
-                    }
+                        }
+                    }else {
+                        System.out.println("Las contraseñas no coinciden");
+                    }    
 
                 } else {
                     System.out.println("No registrado");
                 }
             } else {
+                usercheck = false;
                 System.out.println("El usuario ya existe");
 
             }

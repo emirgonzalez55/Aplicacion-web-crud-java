@@ -42,6 +42,7 @@ public class Registrar extends HttpServlet {
         out.println("<body>");
         out.println("<script type=\"text/javascript\">");
         boolean registro = metodos.registrarUsuario(nombre, password, password1);
+        boolean usercheck = metodos.registrarUsuario(nombre, password, password1);
 
         if (registro == true) {
             request.setAttribute("mensaje", "Usuario creado con exito"
@@ -51,8 +52,15 @@ public class Registrar extends HttpServlet {
         } else if (nombre == null && password == null) {
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
 
-        } else {
-            request.setAttribute("mensaje", "¡Las contraseñas no coinciden y/o el usuario ya existe!");
+        }
+        if (password.equals(password1)){
+        }else{
+            request.setAttribute("mensaje", "¡Las contraseñas no coinciden!");
+            request.getRequestDispatcher("registrar.jsp").forward(request, response);
+        }
+        if (usercheck = false){
+        }else{
+            request.setAttribute("mensaje", "¡El usuario ya existe!");
             request.getRequestDispatcher("registrar.jsp").forward(request, response);
         }
         System.out.println("El valor agregado es" + registro);
