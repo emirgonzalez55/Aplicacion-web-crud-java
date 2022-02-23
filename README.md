@@ -10,7 +10,6 @@ Actualización V1.2202230000BETA<br>
 -Nuevas mejoradas.<br>
 
 Versiones anteriores.<br>
-
 Versión V1.2201280048BETA<br>
 -Corrección de errores.<br>
 -Mejoras visuales.<br>
