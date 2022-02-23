@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
   </head>
-    
+<body>   
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="inicio.jsp">CPUS</a>
@@ -51,23 +51,22 @@
             <li><a class="dropdown-item " href="#">Usuario:
             <%=request.getSession().getAttribute("nombre")%>
             </a></li>
-            <li><a class="dropdown-item" href="#" id="boton">Modo oscuro</a></li>
+            <li><button class="dropdown-item" id="boton">Modo oscuro</button></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item active" action="Cerrarsesion" href="Cerrarsesion">Cerrar sesion</a></li>
           </ul>
     </div>
   </div>   
 </nav>
-    <div class="footer lead">
-        <footer class="py-3 my-4 border-top">
-            <div class="">
-                <span class="">&copy; 2022 Emir S.A</span>
+    <div class="lead">
+        <footer class="py-2">
+            <div>
+                <span>&copy; 2022 Emir S.A</span>
             </div>
         </footer>
     </div>
             
 
- <body>
     <script src="css/modo.js"></script>
     <script src="css/bootstrap.bundle.min.js"></script>
 </body>
