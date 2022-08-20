@@ -7,12 +7,14 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 
-<%    Connection conexion = null;
+<%    
+    Connection conexion = null;
     Statement sentenciaPreparada = null;
     ResultSet resultado = null;
 
 %>
-<%    String busqueda = request.getParameter("consulta");
+<%    
+    String busqueda = request.getParameter("consulta");
     if (busqueda != null) {
         conexion = ConexionBD.conectar();
         sentenciaPreparada = conexion.createStatement();
@@ -24,7 +26,6 @@
             request.setAttribute("mensaje", "No hay resultados que coincidan con la busqueda");
         }
     } else {
-        request.setAttribute("mensaje", "No hay resultados que coincidan con la busqueda");
     }
 %>    
 <!doctype html>
@@ -36,32 +37,37 @@
     <h1 class="Tablas">   
         ${mensaje}</h1>
     <main>
-
-        <table class='col-md-3 themed-estilo-col' style='border: solid 1px black;'>
+        
+    <div class="table-responsive">
+	<table id="tematable" class="table table-striped table-bordered table-hover ">
+            <%
+            if (busqueda != null) {
+                if (resultado.next() == true){
+            %> 
             <tr>
                 <th>ID</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Rendimiento</th>
             </tr>
+            <%}
+            }%>
+            
             <%
                 if (resultado != null)
                     while (resultado.next()) {
-
-
             %>
-
             <tr>
-                <td class='col-md-3 themed-styles-col'><%= resultado.getString(1)%></td>
-                <td class='col-md-3 themed-styles-col'><%= resultado.getString(2)%></td>
-                <td class='col-md-3 themed-styles-col'><%= resultado.getString(3)%></td>
-                <td class='col-md-3 themed-styles-col'><%= resultado.getString(4)%></td>                                                                         
+                <td class='col-md-1'><%= resultado.getString(1)%></td>
+                <td class='col-md-3'><%= resultado.getString(2)%></td>
+                <td class='col-md-3'><%= resultado.getString(3)%></td>
+                <td class='col-md-3'><%= resultado.getString(4)%></td>                                                                         
 
             </tr>
-
-
             <%}%>
 
         </table>
+    </div>
+<%@ include file="base/js.jsp" %>            
 </body> 
 </html>						

@@ -22,12 +22,15 @@
     <h1 class="Tablas">Listado de Procesadores</h1>
     <a class='btn btn-primary boton'  href='addcpu.jsp'>Añadir procesadores</a>
 
-		<table class='col-md-3 themed-estilo-col' style='border: solid 1px black;'>
+    <div class="table-responsive">
+		<table id="tematable" class="table table-striped table-bordered table-hover ">
 		<tr>
 		<th>ID</th>
 		<th>Marca</th>
 		<th>Modelo</th>
 		<th>Rendimiento</th>
+                <th>Editar</th>
+		<th>Eliminar</th>
 		</tr>
                                         <%
                                             
@@ -42,17 +45,20 @@
                                         %>
                 
 					<tr>
-                                                <td class='col-md-3 themed-styles-col'><%= resultado.getString(1)%></td>
-						<td class='col-md-3 themed-styles-col'><%= resultado.getString(2)%></td>
-						<td class='col-md-3 themed-styles-col'><%= resultado.getString(3)%></td>
-                                                <td class='col-md-3 themed-styles-col'><%= resultado.getString(4)%></td>                                                                         
-						<td class='col-md-3 themed-styles-col'><a class="btn btn-secondary" href="editarcpu.jsp?id=<%= resultado.getString(1)%>&marca=<%= resultado.getString(2)%>&modelo=<%= resultado.getString(3)%>&rendimiento=<%= resultado.getString(4)%>">Editar</a></td>
-                                                <td class='col-md-3 themed-styles-col'><a class="btn btn-danger" href="eliminarcpu.jsp?id=<%= resultado.getString(1)%>">Eliminar</a></td>
+                                                <td class='col-md-1'><%= resultado.getString(1)%></td>
+						<td class='col-md-3'><%= resultado.getString(2)%></td>
+						<td class='col-md-3'><%= resultado.getString(3)%></td>
+                                                <td class='col-md-3'><%= resultado.getString(4)%></td>                                                                         
+						<td class='col-md-1'><a class="btn btn-secondary" href="editarcpu.jsp?id=<%= resultado.getString(1)%>&marca=<%= resultado.getString(2)%>&modelo=<%= resultado.getString(3)%>&rendimiento=<%= resultado.getString(4)%>">Editar</a></td>
+                                                <td class='col-md-2'><a class="btn btn-danger" href="eliminarcpu.jsp?id=<%= resultado.getString(1)%>">Eliminar</a></td>
 					</tr>
 
 					
 				<%}%>
 			
 		</table>
+                                
+    </div>          
+<%@ include file="base/js.jsp" %>
 </body> 
 </html>						
