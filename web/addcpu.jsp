@@ -29,11 +29,8 @@
 
   </form>
 </main>
+<%@ include file="base/js.jsp" %>     
 </body>
-
-
-
-
 </html>
 
   

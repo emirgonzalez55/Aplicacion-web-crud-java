@@ -49,8 +49,7 @@
   </div>
 </nav>
 
-<body>
-    <script src="css/modo.js"></script>
+<%@ include file="base/js.jsp" %>
 </body>
 
 </html>
