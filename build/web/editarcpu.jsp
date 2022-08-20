@@ -5,6 +5,10 @@
 <%@page import="SQL.ConexionBD"%>
 
 <%
+    if(request.getParameter("id") == null || request.getParameter("marca") == null || request.getParameter("modelo") == null || request.getParameter("rendimiento") == null){
+        response.sendRedirect("procesadores.jsp");
+
+    }
     String id = request.getParameter("id");
     String marca = request.getParameter("marca");
     String modelo= request.getParameter("modelo");
@@ -18,7 +22,7 @@
 <body>
     
 <main class="form-hardware text-center">
-  <form action="editarcpu.jsp" method="GET" >
+  <form action="editarcpu.jsp" method="POST" >
     <img class="mb-4" src="img/cpus.png" alt="" width="100" height="80">
     <h1 class="h3 mb-3 fw-normal">Editar cpu</h1>
     <div class="form-floating">
@@ -46,7 +50,8 @@
                 conexion = ConexionBD.conectar();
                 sentenciaPreparada = conexion.createStatement();
                 sentenciaPreparada.executeUpdate("UPDATE procesadores SET marca='" + marca + "',modelo='" + modelo + "',rendimiento='" + rendimiento + "' WHERE id='" + id + "';");
-                request.getRequestDispatcher("procesadores.jsp").forward(request, response);
+                response.sendRedirect("procesadores.jsp");
+
                 } catch (Exception e) {
                     out.print(e);
                 }
@@ -54,6 +59,6 @@
 
 
     %>
-
+<%@ include file="base/js.jsp" %>
 </body>
 </html>

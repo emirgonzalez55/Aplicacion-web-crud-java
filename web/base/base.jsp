@@ -48,9 +48,9 @@
             <img src="img/login.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end " aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item " href="#">Usuario:
+            <li><button class="dropdown-item " href="#">Usuario:
             <%=request.getSession().getAttribute("nombre")%>
-            </a></li>
+            </button></li>
             <li><button class="dropdown-item" id="boton">Modo oscuro</button></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item active" action="Cerrarsesion" href="Cerrarsesion">Cerrar sesion</a></li>
@@ -58,16 +58,16 @@
     </div>
   </div>   
 </nav>
-    <div class="lead">
+    <div>
         <footer class="py-2">
             <div>
-                <span>&copy; 2022 Emir S.A</span>
+                <span>© 2022 EMIR S.A</span>
+                 <span><a class="version" href="version.jsp">version 1.1.0</a></span> 
             </div>
         </footer>
     </div>
             
 
-    <script src="css/modo.js"></script>
-    <script src="css/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
